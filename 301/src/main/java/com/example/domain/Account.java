@@ -6,12 +6,42 @@ public class Account {
 
 	private Long accountId;
 
-	private LocalDateTime signUpDate = LocalDateTime.now(); // 회원가입일
+	private String id;
+
+	private String pw;
+
+	private String uname;
+
+	private LocalDateTime signUpDate; // 회원가입일
 
 	private LocalDateTime withdrawalDate; // 탈퇴일
 
 	public Long getAccountId() {
 		return accountId;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getPw() {
+		return pw;
+	}
+
+	public void setPw(String pw) {
+		this.pw = pw;
+	}
+
+	public String getUname() {
+		return uname;
+	}
+
+	public void setUname(String uname) {
+		this.uname = uname;
 	}
 
 	public void setAccountId(Long accountId) {
@@ -36,8 +66,8 @@ public class Account {
 
 	@Override
 	public String toString() {
-		return "Account [accountId=" + accountId + ", signUpDate=" + signUpDate + ", withdrawalDate=" + withdrawalDate
-				+ "]";
+		return "Account [accountId=" + accountId + ", id=" + id + ", pw=" + pw + ", uname=" + uname + ", signUpDate="
+				+ signUpDate + ", withdrawalDate=" + withdrawalDate + "]";
 	}
 
 }

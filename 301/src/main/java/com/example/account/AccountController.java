@@ -9,6 +9,11 @@ import com.example.domain.Account;
 
 @Controller
 public class AccountController {
+	private final AccountService accountService;
+
+	public AccountController(AccountService accountService) {
+		this.accountService = accountService;
+	}
 
 	@GetMapping("/login")
 	public String showLoginPage() {
@@ -17,14 +22,15 @@ public class AccountController {
 
 	@GetMapping("/sign-up")
 	public String showSignUpPage() {
-		return "account/sign-up";
+		return "account/signup";
 	}
 
 	@PostMapping("/sign-up")
 	public String signUpProcess(@ModelAttribute Account account) {
-		// TODO: 회원가입 처리
+		accountService.signUp(account);
 
 		System.out.println(account);
+
 		return "account/login";
 	}
 
