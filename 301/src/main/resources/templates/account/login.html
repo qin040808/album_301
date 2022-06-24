@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http:/www.thymeleaf.org">
-<head th:replace="fragments :: head"></head>
+<head th:replace="fragments :: accounHead"></head>
 <body>
-    <form class="wrap" mathed="POST" action="login" onsubmit="test()" >
+    <form class="wrap" method="POST" th:action="@{login}" onsubmit="return test()" >
             <div class="login">
-             <a href="index.html"><img class="login_logo" src="./img/logo.jpg"></a>          
+             <a th:href="@{/}"><img class="login_logo" src="./img/logo.jpg"></a>          
                 <h2>로그인</h2>
                     <div class="login_id">
                         <h4>아이디</h4>
@@ -13,7 +13,7 @@
                     </div>
                     <div class="login_pw">
                         <h4>패스워드</h4>
-                        <input type="password" name="pw" id="pw" placeholder="패스워드">
+                        <input type="password" name="password" id="pw" placeholder="패스워드">
                         <p id="pw2_err" class="warning">패스워드를 입력해주세요</p><!-- warning 클래스는 빨간 글씨 스타일임 -->
                     </div>
                     <div class="login_etc">

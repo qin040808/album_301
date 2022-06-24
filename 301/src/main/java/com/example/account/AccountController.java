@@ -1,5 +1,7 @@
 package com.example.account;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -15,9 +17,25 @@ public class AccountController {
 		this.accountService = accountService;
 	}
 
+	@GetMapping("/")
+	public String normalHome() {
+		return "home/index";
+	}
+
 	@GetMapping("/login")
-	public String showLoginPage() {
+	public String loginPage() {
 		return "account/login";
+	}
+
+	@PostMapping("/login")
+	public String loginHome(@ModelAttribute Account account, HttpSession session) {
+		Account loginAccount = accountService.login(account.getId(), account.getPassword());
+
+		if (loginAccount != null) {
+			session.setAttribute("current_login", session);
+		}
+
+		return "home/index";
 	}
 
 	@GetMapping("/sign-up")
@@ -28,8 +46,6 @@ public class AccountController {
 	@PostMapping("/sign-up")
 	public String signUpProcess(@ModelAttribute Account account) {
 		accountService.signUp(account);
-
-		System.out.println(account);
 
 		return "account/login";
 	}

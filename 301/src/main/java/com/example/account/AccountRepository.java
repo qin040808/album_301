@@ -16,6 +16,11 @@ public class AccountRepository {
 	}
 
 	public void signUp(Account account) {
-		sessionTemplate.getMapper(AccountMapper.class).newAccount(account.getId(), account.getPw(), account.getUname());
+		sessionTemplate.getMapper(AccountMapper.class).newAccount(account.getId(), account.getPassword(),
+				account.getUname());
+	}
+
+	public Account login(String id, String pw) {
+		return sessionTemplate.getMapper(AccountMapper.class).accountCheck(id, pw);
 	}
 }

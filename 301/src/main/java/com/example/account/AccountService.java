@@ -15,4 +15,14 @@ public class AccountService {
 	public void signUp(Account account) {
 		accountRepository.signUp(account);
 	}
+
+	public Account login(String id, String pw) {
+		Account account = accountRepository.login(id, pw);
+
+		if (account == null) {
+			return null;
+		}
+
+		return account;
+	}
 }

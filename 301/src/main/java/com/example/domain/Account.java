@@ -8,7 +8,7 @@ public class Account {
 
 	private String id;
 
-	private String pw;
+	private String password;
 
 	private String uname;
 
@@ -20,6 +20,10 @@ public class Account {
 		return accountId;
 	}
 
+	public void setAccountId(Long accountId) {
+		this.accountId = accountId;
+	}
+
 	public String getId() {
 		return id;
 	}
@@ -28,12 +32,12 @@ public class Account {
 		this.id = id;
 	}
 
-	public String getPw() {
-		return pw;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setPw(String pw) {
-		this.pw = pw;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public String getUname() {
@@ -42,10 +46,6 @@ public class Account {
 
 	public void setUname(String uname) {
 		this.uname = uname;
-	}
-
-	public void setAccountId(Long accountId) {
-		this.accountId = accountId;
 	}
 
 	public LocalDateTime getSignUpDate() {
@@ -66,8 +66,8 @@ public class Account {
 
 	@Override
 	public String toString() {
-		return "Account [accountId=" + accountId + ", id=" + id + ", pw=" + pw + ", uname=" + uname + ", signUpDate="
-				+ signUpDate + ", withdrawalDate=" + withdrawalDate + "]";
+		return "Account [accountId=" + accountId + ", id=" + id + ", password=" + password + ", uname=" + uname
+				+ ", signUpDate=" + signUpDate + ", withdrawalDate=" + withdrawalDate + "]";
 	}
 
 }
