@@ -10,7 +10,7 @@ public class Account {
 
 	private String password;
 
-	private String uname;
+	private String nickname;
 
 	private LocalDateTime signUpDate; // 회원가입일
 
@@ -40,14 +40,6 @@ public class Account {
 		this.password = password;
 	}
 
-	public String getUname() {
-		return uname;
-	}
-
-	public void setUname(String uname) {
-		this.uname = uname;
-	}
-
 	public LocalDateTime getSignUpDate() {
 		return signUpDate;
 	}
@@ -66,8 +58,16 @@ public class Account {
 
 	@Override
 	public String toString() {
-		return "Account [accountId=" + accountId + ", id=" + id + ", password=" + password + ", uname=" + uname
+		return "Account [accountId=" + accountId + ", id=" + id + ", password=" + password + ", nickname=" + nickname
 				+ ", signUpDate=" + signUpDate + ", withdrawalDate=" + withdrawalDate + "]";
+	}
+
+	public String getNickname() {
+		return nickname;
+	}
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
 	}
 
 }

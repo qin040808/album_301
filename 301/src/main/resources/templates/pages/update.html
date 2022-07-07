@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http:/www.thymeleaf.org">
+<head th:replace="fragments :: defaultHead"></head>
+<body style="min-height: calc(100vh - 72px);">
+    <nav th:replace="fragments :: homeHead"></nav>
+    <section style="min-height: calc(100vh - 72px);">
+        <form class="wrap" method="POST" th:action="@{/update}" th:object="${updateuserForm}"  onsubmit="return test()" >
+	        <div class="bg-primary text-white text-center" style="min-height: calc(100vh - 72px);">
+	            <div class="private-wrap">
+	                <div class="private-container">
+	                    <div class="private-logo">
+	                        <a th:href="@{/}"><img src="./img/title.jpg" style="border-radius: 50%; height: 150px; width: 150px;"></a>
+	                    </div>
+	                    <div class="private-info-box">
+	                        <div class="private-info">
+	                            <div class="private-span">
+	                                <span>닉네임</span>
+	                                <span>새로운 비밀번호</span>
+	                                <span>새로운 비밀번호 확인</span>
+	                            </div>
+	                            <div class="private-input">
+	                                <div class="user_name">
+	                                    <input type="text" name="nickname" th:field="*{nickname}" placeholder="닉네임" style="display: inline-block;">
+	                                    <p id="uname_err" class="warning">닉네임을 입력해주세요</p><!-- warning 클래스는 빨간 글씨 스타일임 -->
+	                                    <p id="uname_err2" class="warning">닉네임은 2~8글자 입력하셔야 합니다.</p>
+	                                </div>
+	                                <div class="new_pw">
+	                                    <input type="password" name="password" th:field="*{password}" placeholder="새로운 패스워드"minlength="8" maxlength="16">
+	                                    <p id="pw_err" class="warning" >패스워드를 입력해주세요</p><!-- warning 클래스는 빨간 글씨 스타일임 -->
+	                                    <p id="pw_err2" class="warning" >패스워드는 8~16글자 입력하셔야 합니다.</p><!-- warning 클래스는 빨간 글씨 스타일임 --> 
+	                                    <p th:if="${#fields.hasErrors('password')}" class="warning2" th:errors="*{password}"></p>
+	                                </div>
+	                                <div class="new_pw_check">
+	                                    <input type="password" name="repw" id="repw" placeholder="새로운 패스워드 확인">
+	                                    <p id="repw_err" class="warning">패스워드가 일치하지 않습니다. </p><!-- warning 클래스는 빨간 글씨 스타일임 -->
+	                                </div>
+	                            </div>
+	                        </div>
+	                    </div>
+	                    <div class="private-buttons">
+	                        <input type="submit" value="수정"  style="cursor:pointer;" >
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+    	</form>
+    </section>
+    <footer class="footer text-center">
+        <div class="copyright py-4 text-center text-white">
+            <div class="container"><small>세명컴퓨터고등학교 도로명주소:03337 서울특별시 은평구 통일로92가길 33 | 연락처: 02-354-1321 | 2022301</small></div>
+        </div>
+    </footer>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/scripts.js"></script>
+<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+<script>
+    
+window.onload = function() {
+    const password = document.getElementById("password");
+    const repw = document.getElementById("repw");
+    const nickname = document.getElementById("nickname");
+    const pw_err = document.getElementById("pw_err");
+    const repw_err = document.getElementById("repw_err");
+    const uname_err = document.getElementById("uname_err");
+    const pw_err2 = document.getElementById("pw_err2");
+    const uname_err2 = document.getElementById("uname_err2");
+  
+  
+  }
+  
+ 
+  
+  function test() {
+    //변수에 담아주기
+    if (nickname.value==="") { //해당 입력값이 없을 경우 같은말: if(!id.value)
+    	uname_err.style.display="block";
+    	nickname.focus(); //focus(): 커서가 깜빡이는 현상, blur(): 커서가 사라지는 현상
+        return false; //return: 반환하다 return false:  아무것도 반환하지 말아라 아래 코드부터 아무것도 진행하지 말것
+    }else{
+    	uname_err.style.display="none";
+    }
+    if(nickname.value.length <2 || nickname.value.length > 8){
+    	uname_err2.style.display="block";
+    	nickname.focus(); //focus(): 커서가 깜빡이는 현상, blur(): 커서가 사라지는 현상
+        return false; //return: 반환하다 return false:  아무것도 반환하지 말아라 아래 코드부터 아무것도 진행하지 말것
+    }else{
+    	uname_err2.style.display="none";
+    }
+    
+    if(password.value === "") { //해당 입력값이 없을 경우 같은말: if(!id.value)
+    	pw_err.style.display="block";
+    	password.focus(); //focus(): 커서가 깜빡이는 현상, blur(): 커서가 사라지는 현상
+      return false; //return: 반환하다 return false:  아무것도 반환하지 말아라 아래 코드부터 아무것도 진행하지 말것
+    }else{
+    	pw_err.style.display="none";
+    }
+    
+    if(password.value.length <8 || password.value.length > 12){
+    	pw_err2.style.display="block";
+    	password.focus(); //focus(): 커서가 깜빡이는 현상, blur(): 커서가 사라지는 현상
+      return false; //return: 반환하다 return false:  아무것도 반환하지 말아라 아래 코드부터 아무것도 진행하지 말것
+    }else{
+    	pw_err2.style.display="none";
+    }
+    //비밀번호 영문자+숫자+특수조합(8~25자리 입력) 정규식
+    
+  
+    if (password.value !== repw.value) { //해당 입력값이 없을 경우 같은말: if(!id.value)
+      repw_err.style.display="block";
+      repw.focus(); //focus(): 커서가 깜빡이는 현상, blur(): 커서가 사라지는 현상
+      return false; //return: 반환하다 return false:  아무것도 반환하지 말아라 아래 코드부터 아무것도 진행하지 말것
+    }else{
+      repw_err.style.display="none";
+    }
+    //입력 값 전송
+
+    return true;
+
+
+
+  }
+
+</script>
+</html>

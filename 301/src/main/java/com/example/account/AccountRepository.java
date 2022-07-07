@@ -1,5 +1,7 @@
 package com.example.account;
 
+import java.util.UUID;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -17,10 +19,20 @@ public class AccountRepository {
 
 	public void signUp(Account account) {
 		sessionTemplate.getMapper(AccountMapper.class).newAccount(account.getId(), account.getPassword(),
-				account.getUname());
+				account.getNickname());
 	}
 
-	public Account login(String id, String pw) {
-		return sessionTemplate.getMapper(AccountMapper.class).accountCheck(id, pw);
+	public void Updata(Account account) {
+		sessionTemplate.getMapper(AccountMapper.class).redataAccount(account.getId(), account.getPassword(),
+				account.getNickname());
+	}
+
+	public void userDelete(Account account) {
+		sessionTemplate.getMapper(AccountMapper.class).userDelete(account.getAccountId(),
+				account.getId() + "/" + (UUID.randomUUID().toString().substring(0, 13)));
+	}
+
+	public Account login(String id) {
+		return sessionTemplate.getMapper(AccountMapper.class).accountCheck(id);
 	}
 }

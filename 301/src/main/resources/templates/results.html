@@ -1,0 +1,16 @@
+<html lang="ko" xmlns:th="http:/www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	    <title>파일 보내기 예제</title>
+	</head>
+	<body>
+		<ul>
+			<li th:each="file: ${files}">
+					<img th:src="@{'/img/' + ${file.fileName}}" alt="이미지 확인하기"/>
+					<a th:href="@{/Delete}">삭제</a>
+			</li>
+		</ul>
+	</body>
+</html>

@@ -605,7 +605,7 @@ progress {
 
 .img-fluid {
   max-width: 100%;
-  height: auto;
+  max-height: 100%;
 }
 
 .img-thumbnail {
@@ -687,6 +687,15 @@ progress {
   padding-left: calc(var(--bs-gutter-x) * 0.5);
   margin-top: var(--bs-gutter-y);
 }
+.wrapper > * {
+  flex-shrink: 0;
+  width: 24%;
+  max-width: 100%;
+  padding-right: calc(var(--bs-gutter-x) * 0.5);
+  padding-left: calc(var(--bs-gutter-x) * 0.5);
+  margin-top: var(--bs-gutter-y);   
+}
+
 
 .col {
   flex: 1 0 0%;
@@ -2192,7 +2201,7 @@ progress {
 
 .form-control {
   display: block;
-  width: 100%;
+  width: 8 0%;
   padding: 0.375rem 0.75rem;
   font-size: 1rem;
   font-weight: 400;
@@ -2200,7 +2209,7 @@ progress {
   color: #212529;
   background-color: #fff;
   background-clip: padding-box;
-  border: 0.125rem solid #ced4da;
+  border: 0.125rem solid #bcc0c5;
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
@@ -5482,16 +5491,16 @@ textarea.form-control-lg {
 
 .modal {
   position: fixed;
-  top: 0;
-  left: 0;
+  top: 50%;
+  left: 50%;
   z-index: 1055;
   display: none;
-  width: 100%;
-  height: 100%;
+  transform: translate(-50%, -50%);
   overflow-x: hidden;
   overflow-y: auto;
   outline: 0;
 }
+
 
 .modal-dialog {
   position: relative;
@@ -11293,7 +11302,7 @@ textarea.form-control-lg {
   }
 }
 html {
-  height: 100%;
+  min-height: 100%;
   scroll-padding-top: calc(4.5rem - 1px);
 }
 
@@ -11513,7 +11522,7 @@ html {
 @media (min-width: 992px) {
   .portfolio-modal .portfolio-modal-title {
     font-size: 3rem;
-    line-height: 2.5rem;
+    line-height: 3.5rem;
   }
 }
 
@@ -11529,9 +11538,59 @@ button > a {
 }
 
 .footer {
+  width: 100%;
   background-color: #2c3e50;
   color: #fff;
-  bottom: 0px;
-  position: fixed;
-  width: 100%;
+}
+
+.grey-container {
+  height: 89%;
+}
+.portfolio .portfolio-item {
+  height: 328px;
+}
+.portfolio .portfolio-item .portfolio-item-caption.background-grey {
+  background-color: grey !important;
+  opacity: 1;
+}
+.portfolio .portfolio-item .portfolio-item-caption.background-grey:hover {
+  background-color: rgba(26, 188, 156, .9) !important;
+}
+.height328 {
+  height: 328px;
+}
+.warning {
+  color: red; 
+  font-size: 13px; 
+  padding-left: 10px; 
+  margin-top: 5px; 
+  display: none;
+}
+.warning2 {
+  color: red; 
+  font-size: 13px; 
+  padding-left: 10px; 
+  margin-top: 5px; 
+  
+}
+
+.user_name {
+  display: flex;
+  flex-direction: row;
+}
+
+.new_pw{
+  display: flex;
+  flex-direction: row;
+}
+
+.new_pw_check {
+  display: flex;
+  flex-direction: row;
+}
+.album-img {
+  width: 100px;
+  height: 100px;
+  background-position: center center;
+  background-repeat: no-repeat;
 }
